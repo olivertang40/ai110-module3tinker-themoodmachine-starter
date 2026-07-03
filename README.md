@@ -13,10 +13,10 @@ This lab gives you hands on experience with how basic systems work, where they b
 ├── mood_analyzer.py    # Rule-based classifier with negation, emoji, and slang support
 ├── main.py             # Runs the rule-based model and interactive demo
 ├── ml_experiments.py   # Tiny ML classifier using scikit-learn (Logistic Regression)
-├── stress_test.py      # (New) Test suite for edge cases: sarcasm, slang, negation, emoji
-├── evaluate.py         # (New) Side-by-side comparison of rule-based vs ML models
-├── PART4_ANALYSIS.md   # (New) Detailed evaluation findings and failure analysis
-├── model_card.md       # Template to document model behavior and limitations
+├── stress_test.py      # Test suite for edge cases: sarcasm, slang, negation, emoji
+├── evaluate.py         # Side-by-side comparison of rule-based vs ML models
+├── PART4_ANALYSIS.md   # Detailed evaluation findings and failure analysis
+├── model_card.md       # Completed model card: how it works, data, limits, ethics
 └── requirements.txt    # Dependencies: scikit-learn, matplotlib, ipykernel
 ```
 
@@ -115,8 +115,27 @@ This implementation includes:
   - Why ML wins (learns patterns) and loses (memorization, black box)
   - Dataset size impact on each approach
 
-### Part 5: Model Card (Next)
-- ⏳ To be completed in `model_card.md`
+### Part 5: Model Card
+- ✅ Completed `model_card.md` with:
+  - Model overview for both rule-based and ML models
+  - Dataset description: 16 posts with slang, emoji, sarcasm
+  - Full documentation of scoring rules, preprocessing, negation handling
+  - ML model architecture (CountVectorizer + Logistic Regression)
+  - Evaluation results with specific correct/incorrect examples
+  - 7 documented limitations with root causes
+  - Ethical considerations: misclassifying distress, cultural bias, privacy
+  - Improvement roadmap (short/medium/long-term)
+
+---
+
+## Project Complete ✅
+
+All 5 parts of the Mood Machine lab have been completed:
+- Part 1: Dataset construction with 16 labeled posts
+- Part 2: Rule-based classifier with negation, emoji, slang support
+- Part 3: Stress testing with 19 edge cases and targeted bug fixes
+- Part 4: Side-by-side evaluation (rule-based 0.75 vs ML 0.94)
+- Part 5: Full model card documenting behavior, data, limitations, and ethics
 
 ---
 
@@ -163,7 +182,7 @@ During this lab you will:
 - ✅ Expand the dataset with more posts, including slang, emojis, sarcasm, or mixed emotions.
 - ✅ Observe unusual or incorrect predictions and think about why they happen.
 - ✅ Train a tiny machine learning model and compare its behavior to your rule-based system.
-- ⏳ Complete the model card with your findings about data, behavior, limitations, and improvements.
+- ✅ Complete the model card with your findings about data, behavior, limitations, and improvements.
 
 The goal is to help you reason about how models behave, how data shapes them, and why even small design choices matter.
 
