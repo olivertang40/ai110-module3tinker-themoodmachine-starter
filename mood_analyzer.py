@@ -77,6 +77,9 @@ NEGATION_BLOCKERS = {
     # idiomatic noun phrases — "no reason", "no idea", "no clue"
     # these mean "without cause", not a negation of sentiment
     "reason", "idea", "clue", "doubt", "wonder", "question",
+    # filler phrases — "don't even know", "don't even care"
+    # the negation is part of a fixed expression, not flipping a sentiment word
+    "even", "know", "care", "bother",
 }
 
 # ---------------------------------------------------------------------------
