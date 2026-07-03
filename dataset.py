@@ -13,29 +13,26 @@ This file defines:
 # ---------------------------------------------------------------------
 
 POSITIVE_WORDS = [
-    "happy",
-    "great",
-    "good",
-    "love",
-    "excited",
-    "awesome",
-    "fun",
-    "chill",
-    "relaxed",
-    "amazing",
+    # original starter
+    "happy", "great", "good", "love", "excited",
+    "awesome", "fun", "chill", "relaxed", "amazing",
+    # extended
+    "wonderful", "fantastic", "joyful", "grateful", "thankful",
+    "proud", "hopeful", "smile", "smiling", "confident",
+    "motivated", "inspired", "peaceful", "content", "thrilled",
+    "delighted", "relieved", "blessed", "energized", "pumped",
 ]
 
 NEGATIVE_WORDS = [
-    "sad",
-    "bad",
-    "terrible",
-    "awful",
-    "angry",
-    "upset",
-    "tired",
-    "stressed",
-    "hate",
-    "boring",
+    # original starter
+    "sad", "bad", "terrible", "awful", "angry",
+    "upset", "tired", "stressed", "hate", "boring",
+    # extended
+    "miserable", "depressed", "frustrated", "anxious", "lonely",
+    "exhausted", "overwhelmed", "hopeless", "drained", "hurt",
+    "worried", "scared", "nervous", "disappointed", "gloomy",
+    "brutal", "horrible", "painful", "annoyed", "dread",
+    "overwhelming",
 ]
 
 # ---------------------------------------------------------------------
@@ -67,28 +64,37 @@ TRUE_LABELS = [
     "negative",  # "I am not happy about this"
 ]
 
-# TODO: Add 5-10 more posts and labels.
-#
-# Requirements:
-#   - For every new post you add to SAMPLE_POSTS, you must add one
-#     matching label to TRUE_LABELS.
-#   - SAMPLE_POSTS and TRUE_LABELS must always have the same length.
-#   - Include a variety of language styles, such as:
-#       * Slang ("lowkey", "highkey", "no cap")
-#       * Emojis (":)", ":(", "🥲", "😂", "💀")
-#       * Sarcasm ("I absolutely love getting stuck in traffic")
-#       * Ambiguous or mixed feelings
-#
-# Tips:
-#   - Try to create some examples that are hard to label even for you.
-#   - Make a note of any examples that you and a friend might disagree on.
-#     Those "edge cases" are interesting to inspect for both the rule based
-#     and ML models.
-#
-# Example of how you might extend the lists:
-#
-# SAMPLE_POSTS.append("Lowkey stressed but kind of proud of myself")
-# TRUE_LABELS.append("mixed")
-#
-# Remember to keep them aligned:
-#   len(SAMPLE_POSTS) == len(TRUE_LABELS)
+# --- New posts added for Part 1 ---
+# Each entry below has a matching label. Styles covered:
+#   slang, emojis, sarcasm, negation, ambiguous/mixed feelings.
+
+SAMPLE_POSTS += [
+    "lowkey obsessed with this song rn 🎶",          # slang + emoji
+    "no cap this week has been absolutely brutal",    # slang + negative
+    "I'm fine. totally fine. everything is fine 🙂", # sarcasm / masked distress
+    "just got promoted omg I'm so happy 😭😭",        # emoji ambiguity (crying = joy)
+    "not bad, not great, just kinda meh",             # negation + neutral/mixed
+    "can't stop smiling today for no reason 😁",     # positive
+    "I absolutely love sitting in 2-hour meetings",  # sarcasm -> negative
+    "feeling 💀 after that exam but proud I finished", # emoji slang + mixed
+    "everyone left and honestly? relieved",           # ambiguous — could be pos or neg
+    "this is so overwhelming I don't even know 😰",  # negative with emoji
+]
+
+TRUE_LABELS += [
+    "positive",  # lowkey obsessed with this song
+    "negative",  # no cap this week has been brutal
+    "negative",  # I'm fine. totally fine. (sarcasm)
+    "positive",  # just got promoted (crying emojis = happy here)
+    "neutral",   # not bad, not great, meh
+    "positive",  # can't stop smiling
+    "negative",  # love sitting in 2-hour meetings (sarcasm)
+    "mixed",     # feeling 💀 after exam but proud
+    "mixed",     # everyone left and honestly relieved (debatable)
+    "negative",  # so overwhelming
+]
+
+# Sanity check — will raise immediately if lists drift out of sync.
+assert len(SAMPLE_POSTS) == len(TRUE_LABELS), (
+    f"Length mismatch: {len(SAMPLE_POSTS)} posts vs {len(TRUE_LABELS)} labels"
+)
